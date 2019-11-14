@@ -4,7 +4,9 @@
 namespace Cart\Shared\Domain\Exception;
 
 
-class ValueIsEmptyException extends \Exception
+use Exception;
+
+class ValueIsEmptyException extends Exception
 {
 
 }

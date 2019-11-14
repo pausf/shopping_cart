@@ -19,13 +19,13 @@ class RemoveCartItem
         $this->repository = $repository;
     }
 
-    public function remove(CartId $cartId , UserId $userId , ProductId $productId)
+    public function remove(CartId $cartId, UserId $userId, ProductId $productId)
     {
 
-        $cart=$this->repository->get($cartId);
+        $cart = $this->repository->get($cartId);
 
         if (null === $cart) {
-            throw new CartNotExistException($cartId->value().' not found');
+            throw new CartNotExistException($cartId->value() . ' not found');
         }
 
         $cart->removeCartItem($productId);

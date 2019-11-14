@@ -17,7 +17,7 @@ class TotalCart
         $this->repository = $repository;
     }
 
-    public function total(CartId $cartId , UserId $userId)
+    public function total(CartId $cartId, UserId $userId)
     {
         return $this->repository->getTotal($cartId);
     }

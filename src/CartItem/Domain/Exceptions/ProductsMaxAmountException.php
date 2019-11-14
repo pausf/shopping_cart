@@ -2,7 +2,9 @@
 
 namespace Cart\CartItem\Domain\Exceptions;
 
-class ProductsMaxAmountException extends \Exception
+use Exception;
+
+class ProductsMaxAmountException extends Exception
 {
 
 }

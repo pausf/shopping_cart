@@ -2,7 +2,9 @@
 
 namespace Cart\Currency\Domain\Exceptions;
 
-class InvalidExhangeRateExceptions extends \Exception
+use Exception;
+
+class InvalidExhangeRateExceptions extends Exception
 {
 
 }

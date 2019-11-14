@@ -25,21 +25,22 @@ class IntNumber
     private function guardIsValidInNumber($value): void
     {
         if (!is_int($value)) {
-            throw new InvalidNumberArgumentException($value.' is not a valid value');
+            throw new InvalidNumberArgumentException($value . ' is not a valid value');
         }
     }
 
     private function guardIsNotNegativeOrZero($value)
     {
         if ($value <= 0) {
-            throw new NumberNotNegativeOrZero($value.' is not a valid value');
+            throw new NumberNotNegativeOrZero($value . ' is not a valid value');
         }
     }
 
-    private function guardIsNotEmpty($value){
+    private function guardIsNotEmpty($value)
+    {
 
         if (!isset($value)) {
-            throw new ValueIsEmptyException($value.' cannot be empty');
+            throw new ValueIsEmptyException($value . ' cannot be empty');
         }
     }
 

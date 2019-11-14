@@ -4,7 +4,9 @@
 namespace Cart\Shared\Domain\Exception;
 
 
-class NumberNotNegativeOrZero extends \Exception
+use Exception;
+
+class NumberNotNegativeOrZero extends Exception
 {
 
 }

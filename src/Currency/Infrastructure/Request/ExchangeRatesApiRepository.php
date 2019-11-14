@@ -11,16 +11,16 @@ class ExchangeRatesApiRepository implements CurrencyRepository
 {
     const URL = 'https://api.exchangeratesapi.io/latest?base=EUR';
 
-    public function get(CurrencyCode $code):string
+    public function get(CurrencyCode $code): string
     {
 
         $client = HttpClient::create();
 
-        $response=$client->request('GET',self::URL);
-        $exchangeRate=get_object_vars(json_decode($response->getContent()));
-        $rates=get_object_vars($exchangeRate['rates']);
+        $response = $client->request('GET', self::URL);
+        $exchangeRate = get_object_vars(json_decode($response->getContent()));
+        $rates = get_object_vars($exchangeRate['rates']);
 
-        if(!isset($rates[$code->value()])){
+        if (!isset($rates[$code->value()])) {
             throw new InvalidExhangeRateExceptions();
         }
 
@@ -31,7 +31,7 @@ class ExchangeRatesApiRepository implements CurrencyRepository
     {
         $client = HttpClient::create();
 
-        $response=$client->request('GET',self::URL);
+        $response = $client->request('GET', self::URL);
 
         return $response->getStatusCode();
     }

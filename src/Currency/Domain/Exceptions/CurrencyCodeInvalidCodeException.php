@@ -2,7 +2,9 @@
 
 namespace Cart\Currency\Domain\Exceptions;
 
-class CurrencyCodeInvalidCodeException extends \Exception
+use Exception;
+
+class CurrencyCodeInvalidCodeException extends Exception
 {
 
 }

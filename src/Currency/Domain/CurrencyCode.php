@@ -3,6 +3,7 @@
 namespace Cart\Currency\Domain;
 
 use Cart\Currency\Domain\Exceptions\CurrencyCodeInvalidCodeException;
+use InvalidArgumentException;
 
 class CurrencyCode
 {
@@ -17,17 +18,19 @@ class CurrencyCode
         $this->code = $code;
     }
 
-    private function guardIfHaveCorrectFormat($code){
+    private function guardIfHaveCorrectFormat($code)
+    {
 
         if (!preg_match('/^[A-Z]{3}$/', $code)) {
-             throw new CurrencyCodeInvalidCodeException();
+            throw new CurrencyCodeInvalidCodeException();
         }
     }
 
-    private function guardIsNotEmpty($code){
+    private function guardIsNotEmpty($code)
+    {
 
         if (empty($code)) {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
     }
 

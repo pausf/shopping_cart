@@ -24,13 +24,14 @@ class Uuid
     private function guardIsValidUuid($value): void
     {
         if (!Ramsey::isValid($value)) {
-            throw new UuidNotValidException($value.' is not a valid value');
+            throw new UuidNotValidException($value . ' is not a valid value');
         }
     }
 
-    private function guardIsNotEmpty($value){
+    private function guardIsNotEmpty($value)
+    {
         if (empty($value)) {
-            throw new ValueIsEmptyException($value.'cannot be empty');
+            throw new ValueIsEmptyException($value . 'cannot be empty');
         }
     }
 

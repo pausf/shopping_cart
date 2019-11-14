@@ -30,25 +30,25 @@ class CartItem
 
     public function increment($amount)
     {
-        $this->amount=new CartItemAmount($this->amount->value()+$amount);
+        $this->amount = new CartItemAmount($this->amount->value() + $amount);
     }
 
     public function getTotalItems()
     {
-        return $this->product->price()->value()*$this->amount->value();
+        return $this->product->price()->value() * $this->amount->value();
     }
 
     public function getTotalItemsWitchDiscount()
     {
-        if($this->product->discount()->discountUnit()->value() <= $this->amount->value())
-        {
+        if ($this->product->discount()->discountUnit()->value() <= $this->amount->value()) {
             return $this->applyDiscountPrice();
         }
-        return $this->product->price()->value()*$this->amount->value();
+        return $this->product->price()->value() * $this->amount->value();
     }
 
-    public function applyDiscountPrice(){
-        return $priceDiscount=$this->amount->value()*$this->product->discount()->discountPrice()->value();
+    public function applyDiscountPrice()
+    {
+        return $priceDiscount = $this->amount->value() * $this->product->discount()->discountPrice()->value();
     }
 
 }

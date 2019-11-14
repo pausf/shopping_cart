@@ -4,9 +4,10 @@
 namespace Cart\Shared\Domain\Exception;
 
 
-class UuidNotValidException extends \Exception
-{
+use Exception;
 
+class UuidNotValidException extends Exception
+{
 
 
 }
