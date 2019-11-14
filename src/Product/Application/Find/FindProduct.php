@@ -2,7 +2,6 @@
 
 namespace Cart\Product\Application\Find;
 
-
 use Cart\Product\Domain\ProductId;
 use Cart\Product\Domain\ProductRepository;
 

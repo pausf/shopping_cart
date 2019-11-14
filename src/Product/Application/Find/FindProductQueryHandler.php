@@ -6,9 +6,7 @@ use Cart\Product\Domain\ProductId;
 
 class FindProductQueryHandler
 {
-
     private $service;
-
 
     public function __construct(FindProduct $service)
     {

@@ -16,7 +16,7 @@ class Currency
 
     public static function create(CurrencyCode $currencyCode, CurrencyExchange $currencyExchange): Currency
     {
-        return new self($currencyCode,$currencyExchange);
+        return new self($currencyCode, $currencyExchange);
     }
 
     public function getCurrencyCode(): CurrencyCode

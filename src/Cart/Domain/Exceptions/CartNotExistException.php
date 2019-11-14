@@ -2,7 +2,9 @@
 
 namespace Cart\Cart\Domain\Exceptions;
 
-class CartNotExistException extends \Exception
+use Exception;
+
+class CartNotExistException extends Exception
 {
 
 }

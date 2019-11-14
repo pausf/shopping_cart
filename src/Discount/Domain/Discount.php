@@ -1,15 +1,12 @@
 <?php
 
-
 namespace Cart\Discount\Domain;
-
 
 class Discount
 {
 
     private $discountPrice;
     private $discountUnit;
-
 
     public function __construct(DiscountFloat $discountPrice, DiscountUnit $discountUnit)
     {
@@ -26,7 +23,5 @@ class Discount
     {
         return $this->discountUnit;
     }
-
-
 
 }

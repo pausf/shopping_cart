@@ -26,14 +26,14 @@ class FloatNumber
     private function guardIsValidNumber($value): void
     {
         if (!is_numeric($value)) {
-            throw new InvalidNumberArgumentException($value.' is not a valid value');
+            throw new InvalidNumberArgumentException($value . ' is not a valid value');
         }
     }
 
     private function guardIsNotNegativeOrZero($value)
     {
         if ($value <= 0) {
-            throw new NumberNotNegativeOrZero($value.' is not a valid value');
+            throw new NumberNotNegativeOrZero($value . ' is not a valid value');
         }
     }
 
@@ -42,7 +42,8 @@ class FloatNumber
         return number_format($this->value, self::DECIMALS, '.', ' ');
     }
 
-    private function guardIsNotEmpty($value){
+    private function guardIsNotEmpty($value)
+    {
 
         if (empty($value)) {
             throw new InvalidArgumentException();

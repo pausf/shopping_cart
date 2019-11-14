@@ -6,11 +6,9 @@ use Cart\Discount\Domain\Discount;
 
 class Product
 {
-
     private $productId;
     private $price;
     private $discount;
-
 
     public function __construct(ProductId $productId, ProductPrice $price, Discount $discount)
     {
@@ -18,7 +16,6 @@ class Product
         $this->price = $price;
         $this->discount = $discount;
     }
-
 
     public function productId(): ProductId
     {
@@ -35,6 +32,5 @@ class Product
     {
         return $this->discount;
     }
-
 
 }

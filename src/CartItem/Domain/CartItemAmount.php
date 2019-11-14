@@ -9,7 +9,8 @@ class CartItemAmount extends IntNumber
 {
     const MAX_SAME_ITEMS = 50;
 
-    function __construct($amount){
+    function __construct($amount)
+    {
 
         parent::__construct($amount);
 

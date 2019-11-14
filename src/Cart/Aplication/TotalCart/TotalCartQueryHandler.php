@@ -20,8 +20,8 @@ class TotalCartQueryHandler implements QueryBusHandlerInterface
     {
 
         return $this->service->total(
-          new CartId($query->getIdCart()),
-          new UserId($query->getIdUser())
+            new CartId($query->getIdCart()),
+            new UserId($query->getIdUser())
         );
 
     }

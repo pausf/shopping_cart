@@ -38,13 +38,11 @@ class InteractiveCartCommand extends Command
     {
 
 
-
-
         $output->writeln("Añadir una Id del Carrito (Recuerde que sea una UUID valida)");
-        $idCart=trim(readline());
+        $idCart = trim(readline());
 
         $output->writeln("Añadir una Id del User (Recuerde que sea una UUID valida)");
-        $idUser=trim(readline());
+        $idUser = trim(readline());
 
 
         $output->writeln([
@@ -53,32 +51,31 @@ class InteractiveCartCommand extends Command
             '',
         ]);
 
-        $messageProduct=[];
+        $messageProduct = [];
         for ($i = 0; $i <= 4; $i++) {
-            $product=new CreateProductCommand(Ramsey::uuid4()->toString(),mt_rand(17,30),mt_rand(7,15),mt_rand(3,4));
+            $product = new CreateProductCommand(Ramsey::uuid4()->toString(), mt_rand(17, 30), mt_rand(7, 15),
+                mt_rand(3, 4));
             $this->messageBus->dispatch($product);
             $output->writeln([
-                'Producto '.$i.' con id: '.$product->id().' Precio: '.$product->price(),
-                'Precio del descuento: '.$product->discountPrice().' Unidades para la promoción: '.$product->discountUnit(),
+                'Producto ' . $i . ' con id: ' . $product->id() . ' Precio: ' . $product->price(),
+                'Precio del descuento: ' . $product->discountPrice() . ' Unidades para la promoción: ' . $product->discountUnit(),
                 '=============================================',
             ]);
 
-            $messageProduct[]= [
-                'Producto '.$i.' con id: '.$product->id().' Precio: '.$product->price(),
-                'Precio del descuento: '.$product->discountPrice().' Unidades para la promoción: '.$product->discountUnit(),
+            $messageProduct[] = [
+                'Producto ' . $i . ' con id: ' . $product->id() . ' Precio: ' . $product->price(),
+                'Precio del descuento: ' . $product->discountPrice() . ' Unidades para la promoción: ' . $product->discountUnit(),
                 '=============================================',
             ];
         }
 
 
-        $this->choiceOption($output,$idCart,$idUser,$messageProduct);
-
-
-
+        $this->choiceOption($output, $idCart, $idUser, $messageProduct);
 
 
     }
-    public function choiceOption(OutputInterface $output,$idCart,$idUser,$messageProduct)
+
+    public function choiceOption(OutputInterface $output, $idCart, $idUser, $messageProduct)
     {
         $output->writeln([
             'Elige una opción ?',
@@ -93,27 +90,27 @@ class InteractiveCartCommand extends Command
         ]);
 
 
-        $choice=trim(readline());
+        $choice = trim(readline());
         switch ($choice) {
             case 1:
-                $this->showProductList($messageProduct,$output);
-                $this->choiceOption($output,$idCart,$idUser,$messageProduct);
+                $this->showProductList($messageProduct, $output);
+                $this->choiceOption($output, $idCart, $idUser, $messageProduct);
                 break;
             case 2:
                 $this->addItem($output, $idCart, $idUser);
-                $this->choiceOption($output,$idCart,$idUser,$messageProduct);
+                $this->choiceOption($output, $idCart, $idUser, $messageProduct);
                 break;
             case 3:
                 $this->showCartTotal($output, $idCart, $idUser);
-                $this->choiceOption($output,$idCart,$idUser,$messageProduct);
+                $this->choiceOption($output, $idCart, $idUser, $messageProduct);
                 break;
             case 4:
                 $this->currencyExchange($output, $idCart, $idUser);
-                $this->choiceOption($output,$idCart,$idUser,$messageProduct);
+                $this->choiceOption($output, $idCart, $idUser, $messageProduct);
                 break;
             case 5:
                 $this->removeItem($output, $idCart, $idUser);
-                $this->choiceOption($output,$idCart,$idUser,$messageProduct);
+                $this->choiceOption($output, $idCart, $idUser, $messageProduct);
                 break;
             case 6:
             default:
@@ -121,7 +118,6 @@ class InteractiveCartCommand extends Command
                 $output->writeln('Para más información puedes visitar este enlace :  https://bit.ly/31aD3Om');
                 break;
         }
-
 
 
     }
@@ -149,7 +145,7 @@ class InteractiveCartCommand extends Command
     {
         $output->writeln('Eliminar un producto del Carrito (Tiene que existir la id del producto para ser introducida)');
         $idProduct = trim(readline());
-        $this->messageBus->dispatch(new RemoveCartItemCommand($idCart, $idProduct,$idUser));
+        $this->messageBus->dispatch(new RemoveCartItemCommand($idCart, $idProduct, $idUser));
     }
 
 
@@ -166,16 +162,16 @@ class InteractiveCartCommand extends Command
         $handled = $response->last(HandledStamp::class);
         $result = $handled->getResult();
 
-        if($result['EUR']!=$result['DISCOUNT']){
+        if ($result['EUR'] != $result['DISCOUNT']) {
             $output->writeln([
-                'El total es :' . $result['EUR'] .' EUR',
-                'El total con descuento :' . $result['DISCOUNT'] .' EUR',
+                'El total es :' . $result['EUR'] . ' EUR',
+                'El total con descuento :' . $result['DISCOUNT'] . ' EUR',
             ]);
 
 
-        }else{
+        } else {
             $output->writeln([
-                'El total es :' . $result['EUR'] .' EUR',
+                'El total es :' . $result['EUR'] . ' EUR',
             ]);
 
         }
@@ -198,18 +194,18 @@ class InteractiveCartCommand extends Command
         $handled = $response->last(HandledStamp::class);
         $result = $handled->getResult();
 
-        if($result['EUR']!=$result['DISCOUNT']){
+        if ($result['EUR'] != $result['DISCOUNT']) {
             $output->writeln([
                 'El total original es :' . $result['EUR'] . ' EUR',
-                'El total original con descuento es :' . $result[$currency] . ' '.$currency,
-                'El total descuento es :' . $result['DISCOUNT'] . ' '.$currency,
-                'El total con la nueva divisa es :' . $result['DISCOUNT_'.$currency].' '.$currency
+                'El total original con descuento es :' . $result[$currency] . ' ' . $currency,
+                'El total descuento es :' . $result['DISCOUNT'] . ' ' . $currency,
+                'El total con la nueva divisa es :' . $result['DISCOUNT_' . $currency] . ' ' . $currency
             ]);
 
-        }else{
+        } else {
             $output->writeln([
                 'El total original es :' . $result['EUR'] . ' EUR',
-                'El total original con descuento es :' . $result[$currency] . ' '.$currency
+                'El total original con descuento es :' . $result[$currency] . ' ' . $currency
             ]);
         }
 
@@ -218,10 +214,10 @@ class InteractiveCartCommand extends Command
     /**
      * @param array $messageProduct
      */
-    protected function showProductList(array $messageProduct,OutputInterface $output)
+    protected function showProductList(array $messageProduct, OutputInterface $output)
     {
 
-        foreach ($messageProduct as $message){
+        foreach ($messageProduct as $message) {
             $output->writeln([
                 $message[0],
                 $message[1],
@@ -231,7 +227,8 @@ class InteractiveCartCommand extends Command
         }
     }
 
-    protected function attackHasselholff(OutputInterface $output){
+    protected function attackHasselholff(OutputInterface $output)
+    {
         $output->writeln([
             '
 NNNNNNNWNNWWWWWWWWWWWMMWWMWWWWWWWWWWWWWWWWWWWMMMMMWMMWWWWWWWWWWWWWWWWWWWWWWMMMMMMMMMWWMMMMMWWWWWWWXx,...   ..          .,0WWWWWWWWWWWWWWWWWW

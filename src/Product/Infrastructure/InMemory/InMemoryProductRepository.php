@@ -9,15 +9,15 @@ use Cart\Product\Domain\ProductRepository;
 class InMemoryProductRepository implements ProductRepository
 {
 
-    private $product=[];
+    private $product = [];
 
 
     public function create(Product $product)
     {
-        $this->product[$product->productId()->value()]=$product;
+        $this->product[$product->productId()->value()] = $product;
     }
 
-    public function find(ProductId $productId):Product
+    public function find(ProductId $productId): Product
     {
         return $this->product[$productId->value()];
     }

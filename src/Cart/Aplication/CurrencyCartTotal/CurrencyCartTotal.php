@@ -14,24 +14,24 @@ class CurrencyCartTotal
     private $cartRepository;
     private $currencyRepository;
 
-    public function __construct(CartRepository $cartRepository , CurrencyRepository $currencyRepository  )
+    public function __construct(CartRepository $cartRepository, CurrencyRepository $currencyRepository)
     {
         $this->cartRepository = $cartRepository;
         $this->currencyRepository = $currencyRepository;
     }
 
-    public function changeCurrency($cartId,$userId,$currencyCode)
+    public function changeCurrency($cartId, $userId, $currencyCode)
     {
 
-        $cart=$this->cartRepository->get($cartId);
+        $cart = $this->cartRepository->get($cartId);
 
         if (null === $cart) {
-            throw new CartNotExistException($cartId->value().' not found');
+            throw new CartNotExistException($cartId->value() . ' not found');
         }
 
-        $rate=$this->currencyRepository->get($currencyCode);
+        $rate = $this->currencyRepository->get($currencyCode);
 
-        $currency=Currency::create($currencyCode,new CurrencyExchange($rate));
+        $currency = Currency::create($currencyCode, new CurrencyExchange($rate));
         $cart->changeCurrency($currency);
 
         $this->cartRepository->update($cart);

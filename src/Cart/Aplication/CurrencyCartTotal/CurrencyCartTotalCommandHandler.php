@@ -20,7 +20,7 @@ class CurrencyCartTotalCommandHandler implements CommandBusHandlerInterface
     public function __invoke(CurrencyCartTotalCommand $command)
     {
 
-         $this->service->changeCurrency(
+        $this->service->changeCurrency(
             new CartId($command->getIdCart()),
             new UserId($command->getIdUser()),
             new CurrencyCode($command->getCodeCurrency())

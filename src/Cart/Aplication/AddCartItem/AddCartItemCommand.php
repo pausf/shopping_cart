@@ -2,7 +2,6 @@
 
 namespace Cart\Cart\Aplication\AddCartItem;
 
-
 use Cart\Shared\Domain\Bus\Command\Command;
 
 class AddCartItemCommand implements Command
@@ -12,7 +11,6 @@ class AddCartItemCommand implements Command
     private $idUser;
     private $amount;
 
-
     public function __construct($idCart, $idProduct, $idUser, $amount)
     {
         $this->idCart = $idCart;
@@ -20,7 +18,6 @@ class AddCartItemCommand implements Command
         $this->idUser = $idUser;
         $this->amount = $amount;
     }
-
 
     public function getIdCart()
     {
@@ -37,11 +34,9 @@ class AddCartItemCommand implements Command
         return $this->idUser;
     }
 
-
     public function getAmount()
     {
         return $this->amount;
     }
-
 
 }
