@@ -5,9 +5,9 @@ namespace Cart\Cart\Aplication\CurrencyCartTotal;
 use Cart\Cart\Domain\CartId;
 use Cart\Currency\Domain\CurrencyCode;
 use Cart\Shared\Domain\User\UserId;
-use Cart\Tests\Shared\Application\CommandBusHandlerInterface;
+use Cart\Shared\Application\CommandBusHandler;
 
-class CurrencyCartTotalCommandHandler implements CommandBusHandlerInterface
+class CurrencyCartTotalCommandHandler implements CommandBusHandler
 {
 
     private $service;

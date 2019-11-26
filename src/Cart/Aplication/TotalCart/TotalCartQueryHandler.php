@@ -4,9 +4,9 @@ namespace Cart\Cart\Aplication\TotalCart;
 
 use Cart\Cart\Domain\CartId;
 use Cart\Shared\Domain\User\UserId;
-use Cart\Tests\Shared\Application\QueryBusHandlerInterface;
+use Cart\Shared\Application\QueryBusHandler;
 
-class TotalCartQueryHandler implements QueryBusHandlerInterface
+class TotalCartQueryHandler implements QueryBusHandler
 {
 
     private $service;

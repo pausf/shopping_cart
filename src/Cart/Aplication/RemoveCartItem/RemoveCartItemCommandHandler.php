@@ -5,9 +5,9 @@ namespace Cart\Cart\Aplication\RemoveCartItem;
 use Cart\Cart\Domain\CartId;
 use Cart\Product\Domain\ProductId;
 use Cart\Shared\Domain\User\UserId;
-use Cart\Tests\Shared\Application\CommandBusHandlerInterface;
+use Cart\Shared\Application\CommandBusHandler;
 
-class RemoveCartItemCommandHandler implements CommandBusHandlerInterface
+class RemoveCartItemCommandHandler implements CommandBusHandler
 {
 
     private $service;

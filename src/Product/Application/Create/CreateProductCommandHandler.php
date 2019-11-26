@@ -8,9 +8,9 @@ use Cart\Discount\Domain\DiscountUnit;
 use Cart\Product\Domain\Product;
 use Cart\Product\Domain\ProductId;
 use Cart\Product\Domain\ProductPrice;
-use Cart\Tests\Shared\Application\QueryBusHandlerInterface;
+use Cart\Shared\Application\QueryBusHandler;
 
-class CreateProductCommandHandler implements QueryBusHandlerInterface
+class CreateProductCommandHandler implements QueryBusHandler
 {
     private $service;
 
